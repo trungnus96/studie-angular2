@@ -40,4 +40,5 @@ npm start
 
 ### What's next?
 Currently, I've already stopped working on this project due to moving to React-Redux :wink:
-My React-Redux version of this project [Studie V2.0](https://github.com/trungnus96/studie-react-redux)
+
+###### My React-Redux version of this project [Studie V2.0](https://github.com/trungnus96/studie-react-redux)
