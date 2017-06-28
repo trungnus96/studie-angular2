@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700i');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Bitter');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+.breadcrumb{
+    background-color: #2C3E50;
+    color: white;
+    font-size: 15px;
+}
+
+.breadcrumb a{
+    text-decoration: none;
+    color: white;
+}
+
+.breadcrumb a:hover{
+    color: #03A678;
+    font-weight: bolder;
+}
+
+.block{
+  float: none;
+  margin: 0 auto;
+}
+
+/*block 1 ==============================================================================================================
+======================================================================================================================*/
+.block-1{
+  background-color: #2C3E50;
+  /*background-color: rgba(0, 0, 0, .5);*/
+}
+
+.block-1 h3{
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+  /*display: inline;
+  border-bottom: 2px solid white;*/
+}
+
+.get-in-touch{
+  float: none;
+  margin: 0 auto;
+  padding: 10px 0 10px 0;
+  text-align: center;
+}
+
+
+/*block 2 ==============================================================================================================
+======================================================================================================================*/
+.block-2{
+  background-color: #DADFE1;
+}
+
+/*block 2 - 1 ==========================================================================================================
+======================================================================================================================*/
+
+.block-2-1{
+  padding: 40px 0 40px 30px;
+}
+
+.block-2-1 h5, h3{
+  font-family: 'Bitter', serif;
+  font-weight: bolder;
+  color: black;
+}
+
+.block-2-1  h6{
+  font-size: 13px;
+  font-family: 'Merriweather', serif;
+  color: black;
+}
+
+
+.block-2-1  i{
+  padding: 10px 10px 0 10px;
+  color: black;
+}
+
+.block-2-1  i:hover{
+  color: rgb(34, 49, 63);
+}
+
+
+/*block 2 - 2 ==========================================================================================================
+======================================================================================================================*/
+
+.block-2-2{
+  padding: 40px 0 30px 30px;
+}
+
+.block-2-2 input{
+  font-size: 12px;
+  height: 30px;
+}
+
+.block-2-2 textarea{
+  font-size: 12px;
+}
+
+.block-2-2 button{
+  font-size: 12px;
+}
+
+.block-2-2 legend{
+  font-family: 'Bitter', serif;
+  font-weight: bolder;
+  color: black;
+  font-size: 17px;
+}
+
+/* responsive layout ===================================================================================================
+======================================================================================================================*/
+@media (max-width: 770px) {
+    .block-2-1 {
+      text-align: center;
+    }
+
+    .button{
+      text-align: center;
+    }
+
+    input{
+      margin-top: 10px;
+    }
+}

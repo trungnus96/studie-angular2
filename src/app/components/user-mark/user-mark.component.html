@@ -1,0 +1,110 @@
+<div class="col-md-12">
+  <div class="well bs-component">
+    <form #addMarkForm="ngForm" *ngIf="active" (ngSubmit)="addMarkSubmit()" class="form-horizontal">
+      <fieldset>
+        <legend>Add Mark</legend>
+
+        <div class="form-group">
+          <label for="subjectName" class="col-md-3 control-label">Subject name</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="subjectName" [(ngModel)]="_subject_name" required name="subjectName" placeholder="Subject name"
+              #subjectName="ngModel">
+            <div *ngIf="subjectName.errors && (subjectName.dirty || subjectName.touched)" class="custom_alert">
+              <div [hidden]="!subjectName.errors.required">
+                School Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subjectCode" class="col-md-3 control-label">Subject code</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="subjectCode" [(ngModel)]="_subject_code" required name="subjectCode" placeholder="Subject code"
+              #subjectCode="ngModel">
+            <div *ngIf="subjectCode.errors && (subjectCode.dirty || subjectCode.touched)" class="custom_alert">
+              <div [hidden]="!subjectCode.errors.required">
+                Subject Code is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="semester" class="col-md-3 control-label">Semester </label>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="semester" [(ngModel)]="_semester" required name="semester" placeholder="Semester"
+              #semester="ngModel">
+            <div *ngIf="semester.errors && (semester.dirty || semester.touched)" class="custom_alert">
+              <div [hidden]="!semester.errors.required">
+                Semester is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="yearLevel" class="col-md-3 control-label">Year Level</label>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="yearLevel" [(ngModel)]="_year_level" required name="yearLevel" placeholder="Year level"
+              #yearLevel="ngModel">
+            <div *ngIf="yearLevel.errors && (yearLevel.dirty || yearLevel.touched)" class="custom_alert">
+              <div [hidden]="!yearLevel.errors.required">
+                Year Level is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="mark" class="col-md-3 control-label">Mark </label>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="mark" [(ngModel)]="_mark" required name="mark" placeholder="Mark" #mark="ngModel">
+            <div *ngIf="mark.errors && (mark.dirty || mark.touched)" class="custom_alert">
+              <div [hidden]="!mark.errors.required">
+                Mark is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group text-left">
+          <label class="col-md-3 control-label">Degree</label>
+          <div class="col-md-8">
+            <i *ngIf="isLoading" class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+            <div class="radio" *ngFor="let degree of degrees">
+              <label>
+                <input type="radio" name="option" name="degree" value="{{degree._id}}">
+                 {{degree.degree_name}} - <strong>{{degree.school_name}}</strong>
+                </label>
+            </div>
+            <br>
+            <div class="button">
+              <input type="submit" [disabled]="!addMarkForm.form.valid" class="btn btn-primary" value="Add">
+              <input (click)="clearForm()" class="btn btn-info" value="Clear">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="add-mark-modal" tabindex="-1" role="dialog" aria-labelledby="add-mark-modalLabel" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+        <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+      </div>
+      <div *ngIf="modal_msg_controller" class="modal-body text-center">
+        <h3>{{modal_msg}}
+          <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+          <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

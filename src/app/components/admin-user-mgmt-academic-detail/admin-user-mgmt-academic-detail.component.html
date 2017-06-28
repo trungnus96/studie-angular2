@@ -1,0 +1,305 @@
+<!-- Default panel contents -->
+<div class="panel panel-default col-md-12 col-sm-12 col-xs-12">
+  <div class="school panel-heading col-md-5 col-sm-12 col-xs-12">
+    <div class="col-md-10 col-sm-10 col-xs-10">
+      {{school.school_name}}
+      <h5>{{school.city}}, {{school.state}}, {{school.country}}</h5>
+    </div>
+    <div class="edit col-md-2 col-sm-2 col-xs-2">
+      <i (click)="updateSchool()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="degree panel-heading col-md-6 col-sm-12 col-xs-12">
+    <div class="col-md-10 col-sm-10 col-xs-10">
+      {{degree.degree_name}}
+      <h5>{{degree.duration}} years</h5>
+    </div>
+    <div class="edit col-md-2 col-sm-2 col-xs-2">
+      <i (click)="updateDegree()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <div class="panel-body col-md-12 col-sm-12 col-xs-12">
+    <!-- Table -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover ">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="col-md-3">Subject Name</th>
+            <th>Subject Code</th>
+            <th>Mark</th>
+            <th>Sem/Year</th>
+            <th class="button text-right">
+              <input type="submit" class="btn btn-info" (click)="addMarkTab()" value="Add">
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngIf="marks">
+          <tr class="text-left" *ngFor="let mark of marks | orderBy; let i = index;">
+            <td>{{i+1}}</td>
+            <td class="col-md-3">{{mark.subject_name}}</td>
+            <td>{{mark.subject_code}}</td>
+            <td>{{mark.mark}}</td>
+            <td>Sem {{mark.semester}}, Year {{mark.year_level}}</td>
+            <td class="button text-right">
+              <input type="submit" class="btn btn-primary" value="Update" (click)="updateMark(mark)">
+              <input type="submit" class="btn btn-danger" value="Delete" (click)="deleteMark(mark)">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <i *ngIf="isLoading_mark" class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+    <div class="empty_info" *ngIf="!isLoading_mark && isMarkEmpty">
+      You have no Marks. Please add one <i class="fa fa-smile-o"></i>
+    </div>
+  </div>
+</div>
+
+
+<!--modal update-school component-->
+<div class="modal bs-example-modal-sm" id="update-school-modal" tabindex="-1" role="dialog" aria-labelledby="update-school-modalLabel"
+  data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="well bs-component">
+          <form #updateSchoolForm="ngForm" (ngSubmit)="updateSchoolSubmit()" class="form-horizontal">
+            <fieldset>
+              <legend>Update School</legend>
+              <div class="form-group">
+                <label for="schoolName" class="col-md-3 control-label">School Name</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="schoolName" [(ngModel)]="_school_name" required minlength="6" name="schoolName"
+                    placeholder="School name" #schoolName="ngModel">
+                  <div *ngIf="schoolName.errors && (schoolName.dirty || schoolName.touched)" class="custom_alert">
+                    <div [hidden]="!schoolName.errors.required">
+                      School Name is required
+                    </div>
+                    <div [hidden]="!schoolName.errors.minlength">
+                      School Name must be at least 6 characters long.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="city" class="col-md-3 control-label">City</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="city" [(ngModel)]="_city" required name="city" placeholder="City" #city="ngModel">
+                  <div *ngIf="city.errors && (city.dirty || city.touched)" class="custom_alert">
+                    <div [hidden]="!city.errors.required">
+                      City is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="state" class="col-md-3 control-label">State</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="state" [(ngModel)]="_state" required name="state" placeholder="State" #state="ngModel">
+                  <div *ngIf="state.errors && (state.dirty || state.touched)" class="custom_alert">
+                    <div [hidden]="!state.errors.required">
+                      State is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="country" class="col-md-3 control-label">Country</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="country" [(ngModel)]="_country" required name="country" placeholder="Country"
+                    #country="ngModel">
+                  <div *ngIf="country.errors && (country.dirty || country.touched)" class="custom_alert">
+                    <div [hidden]="!country.errors.required">
+                      Country is required
+                    </div>
+                  </div>
+                </div>
+                <div class="button-on-update">
+                  <input type="submit" [disabled]="!updateSchoolForm.form.valid || updateSchoolForm.pristine" class="btn btn-primary" value="Update">
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal update-degree component-->
+<div class="modal bs-example-modal-sm" id="update-degree-modal" tabindex="-1" role="dialog" aria-labelledby="update-degree-modalLabel"
+  data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="well bs-component">
+          <form #updateDegreeForm="ngForm" (ngSubmit)="updateDegreeSubmit()" class="form-horizontal">
+            <fieldset>
+              <legend>Update Degree</legend>
+              <div class="form-group">
+                <label for="degreeName" class="col-md-3 control-label">Degree name</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="degreeName" [(ngModel)]="_degree_name" required minlength="6" name="degreeName"
+                    placeholder="Degree name" #degreeName="ngModel">
+                  <div *ngIf="degreeName.errors && (degreeName.dirty || degreeName.touched)" class="custom_alert">
+                    <div [hidden]="!degreeName.errors.required">
+                      Degree Name is required
+                    </div>
+                    <div [hidden]="!degreeName.errors.minlength">
+                      Degree Name must be at least 6 characters long.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="duration" class="col-md-3 control-label">Duration (years)</label>
+                <div class="col-md-8">
+                  <input type="number" class="form-control" id="duration" [(ngModel)]="_duration" required name="duration" placeholder="Duration"
+                    #duration="ngModel">
+                  <div *ngIf="duration.errors && (duration.dirty || duration.touched)" class="custom_alert">
+                    <div [hidden]="!duration.errors.required">
+                      Duration is required
+                    </div>
+                  </div>
+                  <div class="button-on-update">
+                    <input type="submit" [disabled]="!updateDegreeForm.form.valid || updateDegreeForm.pristine" class="btn btn-primary" value="Update">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal update-mark component-->
+<div class="modal bs-example-modal-sm" id="update-mark-modal" tabindex="-1" role="dialog" aria-labelledby="update-mark-modalLabel"
+  data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="well bs-component">
+          <form #updateMarkForm="ngForm" (ngSubmit)="updateMarkSubmit()" class="form-horizontal">
+            <fieldset>
+              <legend>Update Mark</legend>
+
+              <div class="form-group">
+                <label for="subjectName" class="col-md-3 control-label">Subject name</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="subjectName" [(ngModel)]="_subject_name" required name="subjectName" placeholder="Subject name"
+                    #subjectName="ngModel">
+                  <div *ngIf="subjectName.errors && (subjectName.dirty || subjectName.touched)" class="custom_alert">
+                    <div [hidden]="!subjectName.errors.required">
+                      School Name is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subjectCode" class="col-md-3 control-label">Subject code</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="subjectCode" [(ngModel)]="_subject_code" required name="subjectCode" placeholder="Subject code"
+                    #subjectCode="ngModel">
+                  <div *ngIf="subjectCode.errors && (subjectCode.dirty || subjectCode.touched)" class="custom_alert">
+                    <div [hidden]="!subjectCode.errors.required">
+                      Subject Code is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="semester" class="col-md-3 control-label">Semester </label>
+                <div class="col-md-8">
+                  <input type="number" class="form-control" id="semester" [(ngModel)]="_semester" required name="semester" placeholder="Semester"
+                    #semester="ngModel">
+                  <div *ngIf="semester.errors && (semester.dirty || semester.touched)" class="custom_alert">
+                    <div [hidden]="!semester.errors.required">
+                      Semester is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="yearLevel" class="col-md-3 control-label">Year Level</label>
+                <div class="col-md-8">
+                  <input type="number" class="form-control" id="yearLevel" [(ngModel)]="_year_level" required name="yearLevel" placeholder="Year level"
+                    #yearLevel="ngModel">
+                  <div *ngIf="yearLevel.errors && (yearLevel.dirty || yearLevel.touched)" class="custom_alert">
+                    <div [hidden]="!yearLevel.errors.required">
+                      Year Level is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="mark" class="col-md-3 control-label">Mark </label>
+                <div class="col-md-8">
+                  <input type="number" class="form-control" id="mark" [(ngModel)]="_mark" required name="mark" placeholder="Mark" #mark="ngModel">
+                  <div *ngIf="mark.errors && (mark.dirty || mark.touched)" class="custom_alert">
+                    <div [hidden]="!mark.errors.required">
+                      Mark is required
+                    </div>
+                  </div>
+                  <div class="button-on-update">
+                    <input type="submit" [disabled]="!updateMarkForm.form.valid || updateMarkForm.pristine" class="btn btn-primary" value="Update">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+        <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+      </div>
+      <div *ngIf="modal_msg_controller" class="modal-body text-center">
+        <h3>{{modal_msg}}
+          <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+          <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal add-mark component-->
+<div class="modal bs-example-modal-lg" id="addMark" tabindex="-1" role="dialog" aria-labelledby="Label" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <app-user-mark></app-user-mark>
+      </div>
+    </div>
+  </div>
+</div>

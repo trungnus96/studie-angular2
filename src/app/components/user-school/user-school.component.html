@@ -1,0 +1,85 @@
+<div class="col-md-12">
+  <div class="well bs-component">
+    <form #addSchoolForm="ngForm" *ngIf="active" (ngSubmit)="addSchoolSubmit()" class="form-horizontal">
+      <fieldset>
+        <legend>Add School</legend>
+
+        <div class="form-group">
+          <label for="schoolName" class="col-md-3 control-label">School name</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="schoolName" [(ngModel)]="_school_name" required minlength="6" name="schoolName"
+              placeholder="School name" #schoolName="ngModel">
+            <div *ngIf="schoolName.errors && (schoolName.dirty || schoolName.touched)" class="custom_alert">
+              <div [hidden]="!schoolName.errors.required">
+                School Name is required
+              </div>
+              <div [hidden]="!schoolName.errors.minlength">
+                School Name must be at least 6 characters long.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="city" class="col-md-3 control-label">City</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="city" [(ngModel)]="_city" required name="city" placeholder="City" #city="ngModel">
+            <div *ngIf="city.errors && (city.dirty || city.touched)" class="custom_alert">
+              <div [hidden]="!city.errors.required">
+                City is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="state" class="col-md-3 control-label">State</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="state" [(ngModel)]="_state" required name="state" placeholder="State" #state="ngModel">
+            <div *ngIf="state.errors && (state.dirty || state.touched)" class="custom_alert">
+              <div [hidden]="!state.errors.required">
+                State is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="country" class="col-md-3 control-label">Country</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="country" [(ngModel)]="_country" required name="country" placeholder="Country"
+              #country="ngModel">
+            <div *ngIf="country.errors && (country.dirty || country.touched)" class="custom_alert">
+              <div [hidden]="!country.errors.required">
+                Country is required
+              </div>
+            </div>
+            <br>
+            <div class="button">
+              <input type="submit" [disabled]="!addSchoolForm.form.valid" class="btn btn-primary" value="Add">
+              <input type="submit" (click)="clearForm()" class="btn btn-info" value="Clear">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="add-school-modal" tabindex="-1" role="dialog" aria-labelledby="add-school-modalLabel" data-backdrop="static">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+        <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+      </div>
+      <div *ngIf="modal_msg_controller" class="modal-body text-center">
+        <h3>{{modal_msg}}
+          <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+          <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

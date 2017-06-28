@@ -1,0 +1,180 @@
+<div class="col-md-12">
+    <div class="well bs-component">
+        <form #registerForm="ngForm" *ngIf="active" (ngSubmit)="registerUserSubmit()" class="form-horizontal">
+            <fieldset>
+                <legend>Register</legend>
+
+                <div class="form-group">
+                    <label for="username" class="col-md-2 control-label">Username</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="username" [(ngModel)]="_username" required minlength="6" maxlength="20" name="username"
+                            placeholder="Username" #username="ngModel">
+                        <div *ngIf="username.errors && (username.dirty || username.touched)" class="custom_alert">
+                            <div [hidden]="!username.errors.required">
+                                Username is required
+                            </div>
+                            <div [hidden]="!username.errors.minlength">
+                                Username must be at least 6 characters long.
+                            </div>
+                            <div [hidden]="!username.errors.maxlength">
+                                Username cannot be more than 20 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="col-md-2 control-label">Name</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="name" [(ngModel)]="_name" name="name" required minlength="1" maxlength="24" placeholder="Name"
+                            #name="ngModel">
+                        <div *ngIf="name.errors && (name.dirty || name.touched)" class="custom_alert">
+                            <div [hidden]="!name.errors.required">
+                                Name is required
+                            </div>
+                            <div [hidden]="!name.errors.minlength">
+                                Name must be at least 1 characters long.
+                            </div>
+                            <div [hidden]="!name.errors.maxlength">
+                                Name cannot be more than 24 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob" class="col-md-2 control-label">DOB</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="dob" [(ngModel)]="_dob" name="dob" placeholder="Date of Birth" required #dob="ngModel">                        * dd/mm/yyyy
+                        <div *ngIf="dob.errors && (dob.dirty || dob.touched)" class="custom_alert">
+                            <div [hidden]="!dob.errors.required">
+                                Date of Birth is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="col-md-2 control-label">Email</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="email" [(ngModel)]="_email" name="email" placeholder="Email" required #email="ngModel">
+                        <div *ngIf="email.errors && (email.dirty || email.touched)" class="custom_alert">
+                            <div [hidden]="!email.errors.required">
+                                Email is required
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-md-2 control-label">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" id="password" [(ngModel)]="_password" name="password" placeholder="Password"
+                            required minlength="6" maxlength="20" #password="ngModel">
+                        <div *ngIf="password.errors && (password.dirty || password.touched)" class="custom_alert">
+                            <div [hidden]="!password.errors.required">
+                                Password is required
+                            </div>
+                            <div [hidden]="!password.errors.minlength">
+                                Password must be at least 6 characters long.
+                            </div>
+                            <div [hidden]="!password.errors.maxlength">
+                                Password cannot be more than 20 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmNewPassword" class="col-md-2 control-label">Re-type</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" id="confirmNewPassword" placeholder="Re-type Password" required name="confirmNewPassword"
+                            [(ngModel)]="_confirmNewPassword" #confirmNewPassword="ngModel">
+                        <div *ngIf="!isPasswordMatch" class="custom_alert">
+                            Password does not match
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="col-md-2 control-label">Phone</label>
+                    <div class="col-md-10">
+                        <input type="phone" class="form-control" id="phone" [(ngModel)]="_phone" name="phone" placeholder="Phone Number" required
+                            #phone="ngModel">
+                        <a data-toggle="tooltip" title="
+                                            <h6>Examples</h6>
+                                            <p>(123) 456-7890</p>
+                                            <p>123-456-7890</p>
+                                            <p>123.456.7890</p>
+                                            <p>1234567890</p>
+                                            <p>+31636363634</p>
+                                            <p>075-63546725</p>" data-html="true" data-placement="right">Hover over me</a>
+                        <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="custom_alert">
+                            <div [hidden]="!phone.errors.required">
+                                Phone is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Type</label>
+                    <div class="col-md-10">
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="option" id="adminOption" value="admin" [(ngModel)]="_option">
+                              Admin
+                              </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="option" id="staffOption" value="staff" [(ngModel)]="_option">
+                              Staff
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="option" id="memberOption" value="member" [(ngModel)]="_option">
+                              Member
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Disable</label>
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            <label>
+                              <input type="checkbox" id="isDisable" [(ngModel)]="_isDisable" name="isDisable">Check it if you want to disable this account
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button">
+                    <input type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary" value="Register">
+                    <input type="submit" (click)="clearForm()" class="btn btn-info" value="Clear">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="register-modalLabel" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+                <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+            </div>
+            <div *ngIf="modal_msg_controller" class="modal-body text-center">
+                <h3>{{modal_msg}}
+                    <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+                    <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>

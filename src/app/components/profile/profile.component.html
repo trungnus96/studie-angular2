@@ -1,0 +1,205 @@
+<div class="col-md-9 col-sm-9 col-xs-9">
+    <ol class="breadcrumb">
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li class="active">Profile</li>
+    </ol>
+    <div class="panel-body">
+        <div class="tab col-md-4">
+            <ul>
+                <li class="active">
+                    <a href="#accountOverview" aria-controls="home" role="tab" data-toggle="tab" (click)="disableEdit()">Account Overview</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#updateProfile" aria-controls="profile" role="tab" data-toggle="tab" (click)="disableEdit()">Update Profile</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#updatePassword" aria-controls="profile" role="tab" data-toggle="tab" (click)="disableEdit()">Update Password</a>
+                </li>
+                <hr>
+            </ul>
+        </div>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="tab-content">
+                <div class="tab-pane active" id="accountOverview">
+                    <legend class="text-center">Account Overview</legend>
+                    <div class="img col-md-3 col-sm-3">
+                        <img src="../../../assets/images/user.png" height="100%" width="100%">
+                    </div>
+                    <div class="info col-md-9 col-sm-9 col-xs-12">
+                        <div class="heading col-md-5 col-sm-6 col-xs-6">
+                            <h5>Username</h5>
+                        </div>
+                        <div class="data col-md-7 col-sm-6 col-xs-6">
+                            <h5>{{_username}} </h5>
+                        </div>
+                        <div class="heading col-md-5 col-sm-6 col-xs-6">
+                            <h5>Full Name</h5>
+                        </div>
+                        <div class="data col-md-7 col-sm-6 col-xs-6">
+                            <h5>{{_name}} </h5>
+                        </div>
+                        <div class="heading col-md-5 col-sm-6 col-xs-6">
+                            <h5>Date of Birth</h5>
+                        </div>
+                        <div class="data col-md-7 col-sm-6 col-xs-6">
+                            <h5>{{_dob}} </h5>
+                        </div>
+                        <div class="heading col-md-5 col-sm-6 col-xs-6">
+                            <h5>Email</h5>
+                        </div>
+                        <div class="data col-md-7 col-sm-6 col-xs-6">
+                            <h5>{{_email}} </h5>
+                        </div>
+                        <div class="heading col-md-5 col-sm-6 col-xs-6">
+                            <h5>Phone Number</h5>
+                        </div>
+                        <div class="data col-md-7 col-sm-6 col-xs-6">
+                            <h5>{{_phone}} </h5>
+                        </div>
+                        <div class="heading col-md-5 col-sm-6 col-xs-6">
+                            <h5>Type</h5>
+                        </div>
+                        <div class="data col-md-7 col-sm-6 col-xs-6">
+                            <h5 style="border: 2px solid black; display: inline-block;padding: 7px;">{{_type}} </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="updateProfile">
+                    <form class="form-horizontal" #updateProfileForm="ngForm" (ngSubmit)="updateProfile()">
+                        <fieldset>
+                            <legend class="text-center">Update Profile</legend>
+                            <div class="form-group">
+                                <label for="name" class="col-md-4 control-label">Full Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="name" placeholder="Full name" required minlength="1" maxlength="24" name="name"
+                                        [(ngModel)]="_name" #name="ngModel" [disabled]="!edit_profile">
+                                    <div *ngIf="name.errors && (name.dirty || name.touched)" class="custom_alert">
+                                        <div [hidden]="!name.errors.required">
+                                            Name is required
+                                        </div>
+                                        <div [hidden]="!name.errors.minlength">
+                                            Name must be at least 1 characters long.
+                                        </div>
+                                        <div [hidden]="!name.errors.maxlength">
+                                            Name cannot be more than 24 characters long.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob" class="col-md-4 control-label">Date Of Birth</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="dob" placeholder="Date of Birth" required name="dob" [(ngModel)]="_dob" #dob="ngModel"
+                                        [disabled]="!edit_profile">
+                                    <div *ngIf="dob.errors && (dob.dirty || dob.touched)" class="custom_alert">
+                                        <div [hidden]="!dob.errors.required">
+                                            Date of Birth is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">Email</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="email" placeholder="Email" required name="email" [(ngModel)]="_email" #email="ngModel"
+                                        [disabled]="!edit_profile">
+                                    <div *ngIf="email.errors && (email.dirty || email.touched)" class="custom_alert">
+                                        <div [hidden]="!email.errors.required">
+                                            Email is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="col-md-4 control-label">Phone Number</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="phone" placeholder="Phone number" required name="phone" [(ngModel)]="_phone"
+                                        #phone="ngModel" [disabled]="!edit_profile">
+                                    <a data-toggle="tooltip" title="
+                                            <h6>Examples</h6>
+                                            <p>(123) 456-7890</p>
+                                            <p>123-456-7890</p>
+                                            <p>123.456.7890</p>
+                                            <p>1234567890</p>
+                                            <p>+31636363634</p>
+                                            <p>075-63546725</p>" data-html="true" data-placement="right">Hover over me</a>
+                                    <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="custom_alert">
+                                        <div [hidden]="!phone.errors.required">
+                                            Phone is required
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button class="btn btn-info" (click)="editProfile()" [disabled]="edit_profile">Edit</button>
+                                    <input type="submit" [disabled]="!updateProfileForm.form.valid || updateProfileForm.pristine" class="btn btn-primary" value="Save">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-pane" id="updatePassword">
+                    <form class="form-horizontal" #updatePasswordForm="ngForm" (ngSubmit)="updatePassword()">
+                        <fieldset>
+                            <legend class="text-center">Update Password</legend>
+                            <div class="form-group">
+                                <label for="password" class="col-md-4 control-label">Password</label>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control" id="password" placeholder="Password" required name="password" [(ngModel)]="_password"
+                                        #password="ngModel">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword" class="col-md-4 control-label">New Password</label>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control" id="newPassword" placeholder="New Password" required minlength="6" maxlength="20"
+                                        name="newPassword" [(ngModel)]="_newPassword" #newPassword="ngModel">
+                                    <div *ngIf="newPassword.errors && (newPassword.dirty || newPassword.touched)" class="custom_alert">
+                                        <div [hidden]="!newPassword.errors.required">
+                                            Password is required
+                                        </div>
+                                        <div [hidden]="!newPassword.errors.minlength">
+                                            Password must be at least 6 characters long.
+                                        </div>
+                                        <div [hidden]="!newPassword.errors.maxlength">
+                                            Password cannot be more than 20 characters long.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword" class="col-md-4 control-label">Re-type</label>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control" id="confirmNewPassword" placeholder="Re-type New Password" required name="confirmNewPassword"
+                                        [(ngModel)]="_confirmNewPassword" #confirmNewPassword="ngModel">
+                                    <div *ngIf="!isPasswordMatch" class="custom_alert">
+                                        Password does not match
+                                    </div>
+                                    <br>
+                                    <input type="submit" [disabled]="!updatePasswordForm.form.valid" class="btn btn-primary" value="Update">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+                <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+            </div>
+            <div *ngIf="modal_msg_controller" class="modal-body text-center">
+                <h3>{{modal_msg}}
+                    <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+                    <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>

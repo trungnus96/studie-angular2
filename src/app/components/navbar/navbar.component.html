@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="/">Studie</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <!--<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/']">Home</a></li>-->
+                <!--<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/admin/user-mgmt']">Admin</a></li>-->
+                <!--<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/profile']">Profile</a></li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/user/add-school']">School</a></li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/user/add-degree']">Degree</a></li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/user/add-mark']">Mark</a></li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/academic-overview']">Aca</a></li>-->
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li *ngIf="userService.loggedIn()"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/dashboard']">Dash</a></li>-->
+                <!--<li *ngIf="!userService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/login']">Login</a></li>-->
+                <!--<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/register']">Register</a></li>-->
+                <!--<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/contact']">Contact</a></li>-->
+                <li *ngIf="userService.loggedIn()"><a (click)="displayLogoutModal()">Logout</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div *ngIf="userService.loggedIn() && !userService.isHomePage()" class="sidebar col-md-3 col-sm-3 col-xs-3"> 
+    <div class="button-1" [routerLink]="['/dashboard']">
+      <h3><span class="text">Dashboard </span><i class="fa fa-home" aria-hidden="true"></i></h3>
+    </div>
+    <div class="button-2" [routerLink]="['/profile']">
+      <h3><span class="text">Profile </span><i class="fa fa-user-circle-o" aria-hidden="true"></i></h3>
+    </div>
+    <div *ngIf="userService.isAdmin()" class="button-5" [routerLink]="['/admin/user-mgmt']">
+      <h3><span class="text">Users Management </span><i class="fa fa-users" aria-hidden="true"></i></h3>
+    </div>
+    <div class="button-3" [routerLink]="['/study-console']">
+      <h3><span class="text">Study Console </span><i class="fa fa-graduation-cap" aria-hidden="true"></i></h3>
+    </div>
+    <div class="button-4" [routerLink]="['/contact']">
+      <h3><span class="text">Contact </span><i class="fa fa-comments" aria-hidden="true"></i></h3>
+    </div>
+</div>
+
+<!--modal for logout-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Logout</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to logout?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

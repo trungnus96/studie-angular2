@@ -1,0 +1,177 @@
+<div *ngIf="!isAdmin" class="col-md-9 col-sm-9 col-xs-9">
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    <h4 class="alert-heading">Warning!</h4>
+    The project is still on progress, your data might be deleted when necessary
+  </div>
+  <ol class="breadcrumb">
+    <li class="active">Dashboard</li>
+  </ol>
+  <div class="panel-welcome panel-default col-md-6 col-sm-6 col-xs-12">
+    <div class="panel-body text-left">
+      <h3>Hi {{_name}}, </h3>
+      <h4>Welcome to Study Management Console</h4>
+    </div>
+  </div>
+  <div class="panel-user panel-default col-md-6 col-sm-6 col-xs-12">
+    <div class="panel-body text-center">
+      <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+        <h3>Account</h3>
+        <h4>{{_username}}</h4>
+        <br>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 text-center">
+        <img src="../../../assets/images/user.png" height="100px" width="100px">
+        <h4 class="type">{{_type}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="panel-1 panel-default col-md-4 col-sm-4 col-xs-12">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <img src="../../../assets/images/school.png" height="100px" width="100px">
+      </div>
+      <div class="academic col-md-6 text-right">
+        <h3>Schools</h3>
+        <i *ngIf="isLoading_school" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_school">{{school_count}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="panel-2 panel-default col-md-4 col-sm-4 col-xs-12">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <img src="../../../assets/images/degree.png" height="100px" width="100px">
+      </div>
+      <div class="academic col-md-6 text-right">
+        <h3>Degrees</h3>
+        <i *ngIf="isLoading_degree" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_degree">{{degree_count}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="panel-3 panel-default col-md-4 col-sm-4 col-xs-12">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <img src="../../../assets/images/mark.png" height="100px" width="100px">
+      </div>
+      <div class="academic col-md-6 text-right">
+        <h3>Marks</h3>
+        <i *ngIf="isLoading_mark" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_mark">{{mark_count}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADMIN ==================================================================================================================-->
+<!--========================================================================================================================-->
+<div *ngIf="isAdmin" class="col-md-9 col-sm-9 col-xs-9">
+  <ol class="breadcrumb">
+    <li class="active">Dashboard</li>
+  </ol>
+  <div class="panel-welcome panel-default col-md-6 col-sm-6 col-xs-12">
+    <div class="panel-body text-left">
+      <h3>Hi {{_name}}, </h3>
+      <h4>Welcome to Study Management Console</h4>
+    </div>
+  </div>
+  <div class="panel-user panel-default col-md-6 col-sm-6 col-xs-12">
+    <div class="panel-body text-center">
+      <div class="account col-md-6 col-sm-6 col-xs-6 text-left">
+        <h3>Account</h3>
+        <h4>{{_username}}</h4>
+        <br>
+      </div>
+      <div class="type col-md-6 col-sm-6 col-xs-6 text-center">
+        <img src="../../../assets/images/user.png" height="100px" width="100px">
+        <h4 class="type">{{_type}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="panel-4 panel-default col-md-4 col-sm-5 col-xs-12">
+    <div class="admin panel-body">
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <img src="../../../assets/images/admin-users.png" height="100px" width="100px">
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+        <h3>Admin</h3>
+        <i *ngIf="isLoading_user" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_user">{{admin_user_count}}</h4>
+      </div>
+    </div>
+    <div class="staff panel-body">
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <img src="../../../assets/images/staff-users.png" height="100px" width="100px">
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+        <h3>Staff</h3>
+        <i *ngIf="isLoading_user" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_user">{{staff_user_count}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="panel-5 panel-default col-md-8 col-sm-7 col-xs-12 text-center">
+    <div class="panel-body">
+      <div class="enabled-user col-sm-6 col-xs-12">
+        <div class="img col-md-12 col-sm-12 col-xs-6">
+          <img src="../../../assets/images/enabled-users.png" height="100px" width="100px">
+        </div>
+        <div class="a col-md-12 col-sm-12 col-xs-6">
+          <h3>Enabled Users</h3>
+          <i *ngIf="isLoading_user" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+          <h4 *ngIf="!isLoading_user">{{en_user_count}}</h4>
+        </div>
+      </div>
+      <div class="disabled-user col-sm-6 col-xs-12">
+        <div class="img col-md-12 col-sm-12 col-xs-6">
+          <img src="../../../assets/images/disabled-users.png" height="100px" width="100px">
+        </div>
+        <div class="a col-md-12 col-sm-12 col-xs-6">
+          <h3>Disabled Users</h3>
+          <i *ngIf="isLoading_user" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+          <h4 *ngIf="!isLoading_user">{{di_user_count}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel-1 panel-default col-md-4 col-sm-4 col-xs-12">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <img src="../../../assets/images/school.png" height="100px" width="100px">
+      </div>
+      <div class="academic col-md-6 text-right">
+        <h3>Schools</h3>
+        <i *ngIf="isLoading_school" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_school">{{school_count}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="panel-2 panel-default col-md-4 col-sm-4 col-xs-12">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <img src="../../../assets/images/degree.png" height="100px" width="100px">
+      </div>
+      <div class="academic col-md-6 text-right">
+        <h3>Degrees</h3>
+        <i *ngIf="isLoading_degree" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_degree">{{degree_count}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="panel-3 panel-default col-md-4 col-sm-4 col-xs-12">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <img src="../../../assets/images/mark.png" height="100px" width="100px">
+      </div>
+      <div class="academic col-md-6 text-right">
+        <h3>Marks</h3>
+        <i *ngIf="isLoading_mark" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+        <h4 *ngIf="!isLoading_mark">{{mark_count}}</h4>
+      </div>
+    </div>
+  </div>
+</div>

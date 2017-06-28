@@ -1,0 +1,110 @@
+.breadcrumb{
+    background-color: #2C3E50;
+    color: white;
+    font-size: 15px;
+}
+
+.breadcrumb a{
+    text-decoration: none;
+    color: white;
+}
+
+.breadcrumb a:hover{
+    color: #03A678;
+    font-weight: bolder;
+}
+
+.panel{
+    /*background-color: #ECECEC;*/
+    /*border: 1px solid black;*/
+}
+
+.school.panel{
+    border: 1px solid black;
+}
+
+.school.panel-heading{
+    padding: 10px 0 10px 0;
+    font-size: 25px;
+    font-weight: bolder;
+    height: 100%;
+    border-bottom: 2px solid lightgray;
+    background-color: #34495E;
+    color: #ECECEC;
+}
+
+.school.panel.panel-default{
+    margin: 0 10px 20px 10px;
+}
+
+.degree.panel-body{
+    padding: 7px 0 7px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.panel input, button{
+    width: 80px;
+    font-size: 12px;
+    height: 30px;
+    font-weight: bold;
+    padding: 2px;
+}
+
+/*.modal-dialog{
+    width: 50%;
+}*/
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.custom_alert{
+    font-weight: bolder;
+    color: red;
+}
+
+.button input {
+    margin-top: 20px;
+    width: 100px;
+}
+
+h3{
+    margin: 10px;
+}
+
+.empty_info{
+    text-align: center;
+    height: 100%;
+    font-size: 25px;
+    margin: 30px;
+    color: #ABB7B7;
+}
+
+.panel-body input{
+    margin: 2px;
+}
+
+
+/* responsive layout ===================================================================================================
+======================================================================================================================*/
+@media (max-width: 900px){
+    .modal-dialog {
+    width: 70%;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px
+    }
+}
+
+@media (max-width: 700px){
+    .modal-dialog {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px
+    }
+}

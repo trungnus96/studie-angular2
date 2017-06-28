@@ -1,0 +1,62 @@
+<div class="col-md-9 col-sm-9 col-xs-9">
+    <ol class="breadcrumb">
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li class="active">Contact</li>
+    </ol>
+    <div class="block col-md-12 col-xs-12">
+        <div class="block-2 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="block-2-1 text-left">
+                    <h3>Studie</h3>
+                    <h5>Trung NGUYEN - Administrator</h5>
+                    <h6>Frontend Programmer</h6>
+                    <h6><span class="glyphicon glyphicon-envelope"></span> trungnus96@gmail.com</h6>
+                    <h6><span class="glyphicon glyphicon-phone"></span> (+61) 416 024 875</h6>
+                    <br>
+                    <h5>Get Connected</h5>
+                    <a href="https://www.facebook.com/trungnguyenn96" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/trung-nguyen-364593b9/" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/trungnguyenn96" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-12">
+                <div class="block-2-2">
+                    <form #sendEmailForm="ngForm" *ngIf="active" (ngSubmit)="sendEmailSubmit()" class="form-horizontal">
+                        <fieldset>
+                            <legend class="text-center">Hit Me Up</legend>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" [(ngModel)]="firstName">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" [(ngModel)]="lastName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="email">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="company" placeholder="Company" name="company" [(ngModel)]="company">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="2" id="message" placeholder="Say something ..." name="message" [(ngModel)]="message"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="button col-md-12 text-right">
+                                    <button type="submit" class="btn btn-primary" [disabled]="disable_button">
+                                        <div *ngIf="!disable_button">Send message <i class="fa fa-paper-plane-o" aria-hidden="true"></i></div>
+                                        <div *ngIf="disable_button">Sending <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

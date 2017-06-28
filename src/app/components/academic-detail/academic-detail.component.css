@@ -1,0 +1,75 @@
+.breadcrumb{
+    background-color: #2C3E50;
+    color: white;
+    font-size: 15px;
+}
+
+.breadcrumb a{
+    text-decoration: none;
+    color: white;
+}
+
+.breadcrumb a:hover{
+    color: #03A678;
+    font-weight: bolder;
+}
+
+.panel-default{
+    /*border: 1px solid black;*/
+}
+
+.modal{
+    margin-top: 150px;
+}
+
+.panel{
+    /*background-color: #ECECEC;*/
+}
+
+.school.panel-heading, .degree.panel-heading{
+    padding: 10px 0 10px 0;
+    font-size: 20px;
+    font-weight: bolder;
+    height: 100%;
+}
+
+.school.panel-heading{
+    background-color: #34495E;
+    color: #ECECEC;
+}
+
+.degree.panel-heading{
+    background-color: #336E7B;
+    color: #ECECEC;
+}
+
+.school, .degree{
+    margin: 5px;
+    text-align: center;
+}
+
+.button input {
+    width: 80px;
+    font-size: 12px;
+    height: 30px;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.edit i:hover{
+    font-weight: bolder;
+    color: white;
+}
+
+.button-on-update input {
+    margin-top: 20px;
+    width: 100px;
+}
+
+.empty_info{
+    text-align: center;
+    height: 70px;
+    font-size: 25px;
+    margin: 20px;
+    color: #ABB7B7;
+}

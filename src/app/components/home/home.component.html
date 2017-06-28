@@ -1,0 +1,105 @@
+<div class="jumbotron">
+    <div class="col-md-7">
+        <h1 style="font-family: 'Bitter', serif; padding: 50px 0 0 50px">Hello, </h1>
+        <p style="padding-left: 50px">This is <strong style="font-family: 'Bitter', serif; font-size: 25px"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Studie</strong>            , a simple web console for managing your academic grades and related stuff.</p>
+        <p style="padding: 30px 0 0 50px"><a style="padding: 10px 20px 10px 20px; border: 2px solid white; color: white" class="btn wow pulse infinite" href="/login"
+                role="button">Login now</a></p>
+    </div>
+</div>
+
+<div class="text-center" style="margin-top: -30px; padding: 50px 0 50px 0; color: white; background-color: #22313F">
+    <div class="wow flash" style="display: inline-block; border-bottom: 3px solid white;">
+        <h3><strong>About this project</strong></h3>
+    </div><br><br>
+    <div class="wow flipInX">
+        <p>This project is about to build a web management console to store</p>
+        <p> your schools, degrees and marks information for managemnt purpose.</p>
+        <br>
+        <!--<p>I design and develop this project basing on knowledge and</p>
+        <p>experienece earned from my group project at La Trobe University.</p>
+        <p>Hence, you may find similarities between them. <i class="fa fa-smile-o" aria-hidden="true"></i></p>-->
+        <br>
+        <div style="font-weight: bold">
+            <p>If you do not have account to log in</p>
+            <p>Please contact me via links below for an account.</p>
+        </div>
+    </div>
+</div>
+
+<div class="tools col-md-12 col-sm-12 col-xs-12 text-center">
+    <div class="wow lightSpeedIn">
+        <h3 style="font-family: 'Merriweather', serif;"><strong>Developed With</strong></h3>
+    </div>
+    <div class="tools-sub">
+        <div class="front-end col-md-4 col-sm-4 wow fadeInLeftBig">
+            <img src="../../../assets/images/angular2.png" height="100px" width="100px">
+            <!--<h4>Front-end</h4>
+            <hr>
+            <h5>Angular2 (Typescript) along with HTML, CSS, JQuery stuff, JWT and other dependencies.</h5>-->
+        </div>
+        <div class="back-end col-md-4 col-sm-4 wow fadeInUpBig">
+            <img src="../../../assets/images/nodejs.png" height="100px" width="140px">
+            <!--<h4>Back-end</h4>
+            <hr>
+            <h5>NodeJS configuring with mongoose, passportjs and jsonwebtoken.</h5>-->
+        </div>
+        <div class="db col-md-4 col-sm-4 wow fadeInRightBig">
+            <img src="../../../assets/images/mongodb.png" height="100px" width="120px">
+            <!--<h4>Database</h4>
+            <hr>
+            <h5>MongoDB - NoSQL database. Hosted by mLab.</h5>-->
+        </div>
+    </div>
+</div>
+
+<div class="footer col-md-12 col-sm-12 col-xs-12 text-cente">
+    <div class="info col-md-2 col-sm-2 col-xs-3 text-left wow swing">
+        <h5 style="font-size: 25px;">Studie</h5>
+    </div>
+    <div class="info col-md-4 col-sm-4 col-xs-9 text-left wow swing">
+        <h5>Trung NGUYEN</h5>
+        <h6>Frontend Programmer</h6>
+        <h6><span class="glyphicon glyphicon-envelope"></span> trungnus96@gmail.com</h6>
+        <h6><span class="glyphicon glyphicon-phone"></span> (+61) 416 024 875</h6>
+        <br>
+        <h5>Get Connected</h5>
+        <a href="https://www.facebook.com/trungnguyenn96" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/trung-nguyen-364593b9/" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/trungnguyenn96" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <div class="send-message col-md-6 col-sm-6 col-xs-12">
+        <form #sendEmailForm="ngForm" *ngIf="active" (ngSubmit)="sendEmailSubmit()" class="form-horizontal wow zoomIn">
+            <fieldset>
+                <legend class="text-center">Hit Me Up</legend>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" [(ngModel)]="firstName">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" [(ngModel)]="lastName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="email">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="company" placeholder="Company" name="company" [(ngModel)]="company">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="2" id="message" placeholder="Say something ..." name="message" [(ngModel)]="message"></textarea>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-info" [disabled]="disable_button">
+                        <div *ngIf="!disable_button">Send message <i class="fa fa-paper-plane-o" aria-hidden="true"></i></div>
+                        <div *ngIf="disable_button">Sending <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <h5 class="footer text-center">Copyright © 2017 Studie v1.0 Trung Nguyen. All rights reserved.</h5>
+</div>

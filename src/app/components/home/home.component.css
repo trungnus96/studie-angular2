@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700i');
+@import url('https://fonts.googleapis.com/css?family=Bitter');
+
+/*tools ==============================================================================================================
+======================================================================================================================*/
+.tools{
+  padding: 50px 0 50px 0; 
+  color: black;  
+  font-family: 'Bitter', serif;
+  height: 100%;
+  background-color: white;
+}
+
+.tools h3{
+  font-family: 'Merriweather', serif;
+}
+
+.tools-sub{
+  margin: 50px 150px 0 150px;
+}
+
+.front-end, .back-end, .db{
+  padding: 30px 50px 50px 50px;
+}
+
+.tools h4{
+  padding-top: 20px;
+  font-weight: bolder;
+}
+
+.tools h5{
+  font-family: 'Merriweather', serif;
+}
+
+
+/*footer ==============================================================================================================
+======================================================================================================================*/
+.footer{
+  background-color: #22313F;
+}
+
+.footer h3{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.info{
+  padding: 50px;
+}
+
+.info h5{
+  font-family: 'Bitter', serif;
+  font-weight: bolder;
+  color: white;
+}
+
+.info  h6{
+  font-size: 13px;
+  font-family: 'Merriweather', serif;
+  color: white;
+}
+
+
+.info  i{
+  padding: 10px 10px 0 10px;
+  color: white;
+}
+
+.info  i:hover{
+  color: gainsboro;
+}
+
+.send-message{
+  padding: 50px;
+}
+
+.send-message input{
+  font-size: 12px;
+  height: 30px;
+}
+
+.send-message textarea{
+  font-size: 12px;
+}
+
+.send-message button{
+  font-size: 15px;
+}
+
+.send-message legend{
+  font-family: 'Bitter', serif;
+  font-weight: bolder;
+  color: white;
+  font-size: 17px;
+}
+
+/* responsive layout for footer ===================================================================================================
+======================================================================================================================*/
+@media (max-width: 770px) {
+    .info {
+      text-align: center;
+    }
+
+    .button{
+      text-align: center;
+    }
+
+    input{
+      margin-top: 10px;
+    }
+}
+
+/* others ==============================================================================================================
+======================================================================================================================*/
+.jumbotron{
+    padding: 50px;
+    height: 550px;
+    background-image: url(../../../assets/images/h.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: cover;
+    color: white;
+    margin-top: -50px;
+}
+
+.footer{
+    font-family: 'Bitter', serif;
+    color: #ABB7B7;
+    font-size: 12px;
+    padding: 30px 0 5px 0 ;
+}

@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter');
+
+.panel{
+    padding: 0px;
+}
+
+.breadcrumb{
+    background-color: #2C3E50;
+    color: white;
+    font-size: 15px;
+}
+
+.button-1{
+    width: 100%;
+    background-color: #16A085;
+    height: 50px;
+    text-align: center;
+    padding-top: 20px;
+    border: 1px solid black;
+}
+
+.button-1:hover{
+    background-color: red;
+}
+
+.panel-user, .panel-1, .panel-2, .panel-3{
+    padding: 0px;
+}
+
+.panel-welcome{
+    background-color: #16A085;
+    color: white;
+    height: 180px;
+}
+
+.panel-user{
+    background-color: #2C3E50;
+    color: white;
+    height: 180px;
+}
+
+.panel-1{
+    background-color: #FDE3A7;
+}
+
+.panel-2{
+    background-color: #336E7B;
+    color: white;
+}
+
+.panel-3{
+    background-color: #E08283;
+    color: black;
+}
+
+.panel-4{
+    background-color: #ABB7B7;
+}
+
+.panel-4 .panel-body{
+    height: 150px;
+}
+
+.panel-5{
+    background-color: #67809F;
+    height: 300px;
+    padding: 30px;
+    color: black;
+}
+
+h3{
+    font-family: 'Bitter', serif;
+    padding: 5px 0 5px 0;
+}
+
+.panel h4{
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+img{
+    margin: 5px 0 10px 0;
+}
+
+h4.type{
+    border: 2px solid white;
+    width: 120px;
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+}
+
+
+/* responsive layout ===================================================================================================
+======================================================================================================================*/
+@media (max-width: 992px) {
+   h3{
+    font-family: 'Bitter', serif;
+    font-size: 20px;
+    padding: 5px 0 5px 0;
+}
+
+    .panel h4{
+        font-size: 12px;
+        font-weight: bolder;
+    }
+
+    .panel-1, .panel-2, .panel-3, .academic{
+        text-align: center;
+    }
+
+    h4.type{
+        border: 1px solid white;
+        width: 80px;
+        text-align: center;
+        padding: 2px;
+        margin: auto;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .img{
+        text-align: left;
+    }
+    .a{
+        text-align: right;
+    }
+
+    .panel-5{
+        padding: 0;
+    }
+}
+
+@media (max-width: 460px) {
+    img{
+        width: 80px;
+        height: 80px;
+    }
+    
+    h3{
+        font-size: 20px;
+    }
+    
+    h4{
+        font-size: 15px;
+    }
+}

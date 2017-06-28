@@ -1,0 +1,64 @@
+<h1 class="text-center"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Studie </strong> Management Console</h1>
+<h4 class="text-center"><small>by </small> Trung Nguyen</h4>
+<div class="content col-md-5 col-sm-7 col-xs-10 col-centered">
+    <form class="form-horizontal" #loginForm="ngForm" (ngSubmit)="login()">
+        <fieldset>
+            <div class="form-group">
+                <label for="username" class="col-md-4 col-sm-3 col-xs-3 control-label">Username</label>
+                <div class="col-md-6 col-sm-8 col-xs-9">
+                    <input type="text" class="form-control" id="username" [(ngModel)]="_username" required name="username" placeholder="Username"
+                        #username="ngModel">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-md-4 col-sm-3 col-xs-3 control-label">Password</label>
+                <div class="col-md-6 col-sm-8 col-xs-9">
+                    <input type="password" class="form-control" id="password" [(ngModel)]="_password" name="password" placeholder="Password"
+                        required #password="ngModel">
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary" value="Login">
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+                <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+            </div>
+            <div *ngIf="modal_msg_controller" class="modal-body text-center">
+                <h3>{{modal_msg}}
+                    <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+                    <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--commented for code revision-->
+
+<!--<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>-->

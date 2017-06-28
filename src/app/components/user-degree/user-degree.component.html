@@ -1,0 +1,75 @@
+<div class="col-md-12">
+  <div class="well bs-component">
+    <form #addDegreeForm="ngForm" *ngIf="active" (ngSubmit)="addDegreeSubmit()" class="form-horizontal">
+      <fieldset>
+        <legend>Add Degree</legend>
+
+        <div class="form-group">
+          <label for="degreeName" class="col-md-3 control-label">Degree name</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="degreeName" [(ngModel)]="_degree_name" required minlength="6" name="degreeName"
+              placeholder="Degree name" #degreeName="ngModel">
+            <div *ngIf="degreeName.errors && (degreeName.dirty || degreeName.touched)" class="custom_alert">
+              <div [hidden]="!degreeName.errors.required">
+                Degree Name is required
+              </div>
+              <div [hidden]="!degreeName.errors.minlength">
+                Degree Name must be at least 6 characters long.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="duration" class="col-md-3 control-label">Duration (years)</label>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="duration" [(ngModel)]="_duration" required name="duration" placeholder="Duration"
+              #duration="ngModel">
+            <div *ngIf="duration.errors && (duration.dirty || duration.touched)" class="custom_alert">
+              <div [hidden]="!duration.errors.required">
+                Duration is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">School</label>
+          <div class="col-md-8">
+            <i *ngIf="isLoading" class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+            <div class="radio" *ngFor="let school of schools">
+              <label>
+                <input type="radio" name="option" name="school" value="{{school._id}}">
+                {{school.school_name}}
+                </label>
+            </div>
+            <br>
+            <div class="button">
+              <input type="submit" [disabled]="!addDegreeForm.form.valid" class="btn btn-primary" value="Add">
+              <input (click)="clearForm()" class="btn btn-info" value="Clear">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="add-degree-modal" tabindex="-1" role="dialog" aria-labelledby="add-degree-modalLabel" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+        <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+      </div>
+      <div *ngIf="modal_msg_controller" class="modal-body text-center">
+        <h3>{{modal_msg}}
+          <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+          <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

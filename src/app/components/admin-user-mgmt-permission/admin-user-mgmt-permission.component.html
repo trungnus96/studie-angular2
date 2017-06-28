@@ -1,0 +1,79 @@
+<legend class="text-center">Update Permission [<strong> {{_username}} </strong>]</legend>
+<form #updatePermissionForm="ngForm" *ngIf="active" (ngSubmit)="updatePermissionSubmit()" class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-5 col-sm-6 col-xs-6 control-label text-right">Type</label>
+      <div class="col-md-7 col-sm-6 col-xs-6">
+        <div class="radio">
+          <label>
+          <input type="radio" name="option" id="adminOption" value="admin" [(ngModel)]="_type">
+          Admin
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="option" id="staffOption" value="staff" [(ngModel)]="_type">
+            Staff
+            </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="option" id="memberOption" value="member" [(ngModel)]="_type">
+            Member
+            </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-5 col-sm-6 col-xs-6 control-label text-right">Update Profile</label>
+      <div class="col-md-7 col-sm-6 col-xs-6">
+        <label class="switch">
+          <input type="checkbox" id="canUpdateProfile" name="canUpdateProfile" [(ngModel)]="_canUpdateProfile">
+          <div class="slider round"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-5 col-sm-6 col-xs-6 control-label text-right">Update Password</label>
+      <div class="col-md-7 col-sm-6 col-xs-6">
+        <label class="switch">
+          <input type="checkbox" id="canUpdatePassword" name="canUpdatePassword" [(ngModel)]="_canUpdatePassword">
+          <div class="slider round"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-5 col-sm-6 col-xs-6 control-label text-right">Manage Studie</label>
+      <div class="col-md-7 col-sm-6 col-xs-6">
+        <label class="switch">
+          <input type="checkbox" id="canStudie" name="canStudie" [(ngModel)]="_canStudie">
+          <div class="slider round"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="button">
+      <input type="submit" [disabled]="!updatePermissionForm.form.valid || updatePermissionForm.pristine" class="btn btn-primary" value="Save">
+    </div>
+  </fieldset>
+</form>
+
+<!--modal component-->
+<div class="modal bs-example-modal-sm" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div *ngIf="!modal_msg_controller" class="modal-body text-center">
+        <h3>In progress <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></h3>
+      </div>
+      <div *ngIf="modal_msg_controller" class="modal-body text-center">
+        <h3>{{modal_msg}}
+          <i *ngIf="modal_msg_on_success" class="fa fa-check-circle animated zoomIn" style="color:green"></i>
+          <i *ngIf="!modal_msg_on_success" class="fa fa-times-circle animated zoomIn" style="color: darkred"></i>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

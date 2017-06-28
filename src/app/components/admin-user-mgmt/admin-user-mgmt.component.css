@@ -1,0 +1,59 @@
+.breadcrumb{
+    background-color: #2C3E50;
+    color: white;
+    font-size: 15px;
+}
+
+.breadcrumb a{
+    text-decoration: none;
+    color: #ECECEC;
+}
+
+.breadcrumb a:hover{
+    color: #03A678;
+    font-weight: bolder;
+}
+
+.panel{
+    background-color: #ECECEC;
+}
+
+h3.title{
+    background-color: #34495E;
+    color: white;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.button input {
+    width: 80px;
+    font-size: 12px;
+    height: 30px;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.modal{
+    margin-top: 150px;
+}
+
+/*.dropdown>button{
+    width: 80px;
+    font-size: 12px;
+    height: 30px;
+    font-weight: bold;
+    padding: 2px;;
+}*/
+
+/*.dropdown-menu li{
+text-align: center;
+}*/
+
+/* responsive layout ===================================================================================================
+======================================================================================================================*/
+@media (max-width: 750px){
+    .button input {
+        float: right;
+        clear: both;
+    }
+}
