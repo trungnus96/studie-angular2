@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 @Injectable()
 export class UserService {
 
-  // private url = "http://localhost:8080/users/";
-  private url = "users/";
+  private url = "https://ancient-ocean-55048.herokuapp.com/users/";
+  // private url = "users/";
 
   private headers = new Headers();
   jwtHelper: JwtHelper = new JwtHelper();

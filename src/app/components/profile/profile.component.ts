@@ -152,11 +152,11 @@ export class ProfileComponent implements OnInit {
 
   //update local storage after updated
   updateLocalStorage() {
-    var data = JSON.parse(localStorage.getItem('update_user'));
+    var data = JSON.parse(localStorage.getItem('user'));
     data.name = this._name;
     data.dob = this._dob;
     data.email = this._email;
     data.phone = this._phone;
-    localStorage.setItem('update_user', JSON.stringify(data));
+    localStorage.setItem('user', JSON.stringify(data));
   }
 }

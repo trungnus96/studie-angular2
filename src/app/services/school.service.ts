@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SchoolService {
 
-  // private url = "http://localhost:8080/school/";
-  private url = "school/";
+  private url = "https://ancient-ocean-55048.herokuapp.com/school/";
+  // private url = "school/";
   private headers = new Headers();
   constructor(private http: Http) {
   }

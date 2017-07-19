@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MarkService {
 
-  // private url = "http://localhost:8080/mark/";
-  private url = "mark/";
+  private url = "https://ancient-ocean-55048.herokuapp.com/mark/";
+  // private url = "mark/";
 
   private headers = new Headers();
 

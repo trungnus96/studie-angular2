@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DegreeService {
 
-  // private url = "http://localhost:8080/degree/";
-  private url = "degree/";
+  private url = "https://ancient-ocean-55048.herokuapp.com/degree/";
+  // private url = "degree/";
 
   private headers = new Headers();
 
