@@ -10,6 +10,8 @@ export class UserService {
 
   private url = "https://ancient-ocean-55048.herokuapp.com/users/";
   // private url = "users/";
+  // private url = "http://localhost:8080/users/";
+
 
   private headers = new Headers();
   jwtHelper: JwtHelper = new JwtHelper();
@@ -151,7 +153,7 @@ export class UserService {
 
   isAdmin() {
     var token = localStorage.getItem('id_token');
-    return (this.jwtHelper.decodeToken(token)._doc.type == 'admin')
+    return (this.jwtHelper.decodeToken(token).type == 'admin')
   }
 
   isHomePage() {
